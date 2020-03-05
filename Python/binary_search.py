@@ -21,7 +21,7 @@ def __binary_search_recursive(arr, l, r, target):
         return __binary_search_recursive(arr, mid + 1, r, target)
 
 
-def binary_search_iteration(arr, target):
+def binary_search_iterative(arr, target):
     if(len(arr) == 0):
         return -1
     
@@ -46,4 +46,4 @@ if __name__ == '__main__':
     arr.sort()
     print(arr)
     print(binary_search_recursive(arr, 5))
-    print(binary_search_iteration(arr, 5))
+    print(binary_search_iterative(arr, 5))
