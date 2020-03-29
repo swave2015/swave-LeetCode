@@ -11,7 +11,7 @@ private:
             res.push_back(c);
             return;
         }
-        for (int i = start; i <= n; i++) {
+        for (int i = start; i <= n - (k - c.size() )+ 1; i++) {
             c.push_back(i);
             generateCombine(n, k, i + 1, c);
             c.pop_back();
