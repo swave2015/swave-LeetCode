@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <cassert>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ private:
 
     void putQueen(int n, int index, vector<int> colRes) {
         if (index == n) {
-            return res.push_back(generateBoard(colRes));
+            return res.push_back(generateBoard(n, colRes));
         }
         for (int i = 0; i < n; i++) {
             if (!col[i] && !dia1[index + i] && !dia2[index - i + n - 1]) {
@@ -29,17 +30,14 @@ private:
         return;
     }
 
-    vector<string> generateBoard(vector<int> vec) {
-        string s;
-        for (int i = 0; i < vec.size(); i++) {
-            s += '.';
-        }
-        vector<string> res(vec.size(), s);
-        for (int i = 0; i < vec.size(); i++) {
-            res[i][vec[i]] = 'Q';
+    vector<string> generateBoard(int n, vector<int>& colRes) {
+        assert(colRes.size() == n);
+        vector<string> board(colRes.size(), string(n, '.'));
+        for (int i = 0; i < n; i++) {
+            board[i][colRes[i]] = 'Q';
         }
 
-        return res;
+        return board;
     }
 
 public:
